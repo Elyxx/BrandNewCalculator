@@ -13,6 +13,7 @@
 		254553FC1FD99C3900C801B6 /* BrandNewCalculator.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 254553FA1FD99C3900C801B6 /* BrandNewCalculator.xcdatamodeld */; };
 		254553FE1FD99C3900C801B6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 254553FD1FD99C3900C801B6 /* Assets.xcassets */; };
 		254554011FD99C3900C801B6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 254553FF1FD99C3900C801B6 /* LaunchScreen.storyboard */; };
+		256EEBF61FE282F700E83A48 /* RoundedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256EEBF51FE282F700E83A48 /* RoundedLabel.swift */; };
 		25752BFE1FE16797000C2A67 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25752BFD1FE16797000C2A67 /* RoundedButton.swift */; };
 		2587B8091FE16C4100036495 /* InputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2587B8081FE16C4100036495 /* InputViewController.swift */; };
 		2587B80B1FE16C4F00036495 /* OutputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2587B80A1FE16C4F00036495 /* OutputViewController.swift */; };
@@ -27,6 +28,7 @@
 		254553FD1FD99C3900C801B6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		254554001FD99C3900C801B6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		254554021FD99C3900C801B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		256EEBF51FE282F700E83A48 /* RoundedLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedLabel.swift; sourceTree = "<group>"; };
 		25752BFD1FE16797000C2A67 /* RoundedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		2587B8081FE16C4100036495 /* InputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputViewController.swift; sourceTree = "<group>"; };
 		2587B80A1FE16C4F00036495 /* OutputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputViewController.swift; sourceTree = "<group>"; };
@@ -65,6 +67,7 @@
 				254553F31FD99C3900C801B6 /* AppDelegate.swift */,
 				2587B8081FE16C4100036495 /* InputViewController.swift */,
 				25752BFD1FE16797000C2A67 /* RoundedButton.swift */,
+				256EEBF51FE282F700E83A48 /* RoundedLabel.swift */,
 				2587B80A1FE16C4F00036495 /* OutputViewController.swift */,
 				254553F51FD99C3900C801B6 /* ViewController.swift */,
 				254553F71FD99C3900C801B6 /* Main.storyboard */,
@@ -148,6 +151,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				256EEBF61FE282F700E83A48 /* RoundedLabel.swift in Sources */,
 				254553F61FD99C3900C801B6 /* ViewController.swift in Sources */,
 				2587B80B1FE16C4F00036495 /* OutputViewController.swift in Sources */,
 				2587B8091FE16C4100036495 /* InputViewController.swift in Sources */,

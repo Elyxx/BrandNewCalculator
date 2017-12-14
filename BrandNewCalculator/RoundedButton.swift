@@ -40,14 +40,14 @@ class RoundedButton: UIButton {
     
     func setBorderWidth(){
         let glowColor = UIColor(red: 250.0/255.0, green: 251.0/255.0, blue: 255.0/255.0, alpha: 1.0)
-        let red = UIColor(red: 229.0/255.0, green: 236.0/255.0, blue: 255.0/255.0, alpha: 1.0)
+        let light = UIColor(red: 229.0/255.0, green: 236.0/255.0, blue: 255.0/255.0, alpha: 1.0)
         //UIColor.greenColor().CGColor
-        layer.borderColor = red.cgColor
+        layer.borderColor = light.cgColor
         //layer.masksToBounds = true
         layer.borderWidth = 1.5
         
         titleLabel?.layer.shadowColor = glowColor.cgColor
-        titleLabel?.layer.shadowRadius = 8.0
+        titleLabel?.layer.shadowRadius = 6.0
         titleLabel?.layer.shadowOpacity = 0.9
         titleLabel?.layer.shadowOffset = CGSize.zero
         titleLabel?.layer.masksToBounds = false
