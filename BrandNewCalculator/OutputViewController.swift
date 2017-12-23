@@ -10,9 +10,12 @@ import UIKit
 
 class OutputViewController: UIViewController {
 
+    @IBOutlet weak var display: RoundedLabel!
+    
+    @IBOutlet weak var indicator: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
     }
 

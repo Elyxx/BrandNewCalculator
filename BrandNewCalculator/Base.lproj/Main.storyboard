@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -23,13 +24,13 @@
                                 <rect key="frame" x="0.0" y="43.999999999999993" width="375" height="122.33333333333331"/>
                                 <color key="backgroundColor" red="0.2426750064" green="0.43944191929999998" blue="0.63998687269999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
-                                    <segue destination="efA-uF-ra9" kind="embed" id="HHP-co-76b"/>
+                                    <segue destination="efA-uF-ra9" kind="embed" identifier="toOuput" id="HHP-co-76b"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OSI-iH-dcC" userLabel="input">
                                 <rect key="frame" x="0.0" y="166.33333333333331" width="375" height="611.66666666666674"/>
                                 <connections>
-                                    <segue destination="7TV-DS-JMV" kind="embed" id="TzY-hp-u0c"/>
+                                    <segue destination="7TV-DS-JMV" kind="embed" identifier="toInput" id="TzY-hp-u0c"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -59,23 +60,42 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="122.33333333333331"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N1T-ZH-iTm">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N1T-ZH-iTm" userLabel="display" customClass="RoundedLabel" customModule="BrandNewCalculator" customModuleProvider="target">
                                 <rect key="frame" x="6" y="50" width="363" height="32.333333333333343"/>
                                 <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="rounded" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="M" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6sA-e3-7nr" userLabel="indicator">
+                                <rect key="frame" x="6" y="50" width="32.333333333333336" height="32.333333333333343"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="6sA-e3-7nr" secondAttribute="height" multiplier="1:1" id="wZP-0R-x90"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="0.057900066020000002" green="0.0534777076" blue="0.06006107234" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="N1T-ZH-iTm" firstAttribute="bottom" secondItem="6sA-e3-7nr" secondAttribute="bottom" id="81s-Ri-oo6"/>
                             <constraint firstItem="vpH-Rs-Lvw" firstAttribute="trailing" secondItem="N1T-ZH-iTm" secondAttribute="trailing" constant="6" id="91B-fh-8QQ"/>
                             <constraint firstItem="N1T-ZH-iTm" firstAttribute="leading" secondItem="vpH-Rs-Lvw" secondAttribute="leading" constant="6" id="FH7-MQ-ZJE"/>
+                            <constraint firstItem="6sA-e3-7nr" firstAttribute="top" secondItem="N1T-ZH-iTm" secondAttribute="top" id="QaE-oS-Ubp"/>
+                            <constraint firstItem="6sA-e3-7nr" firstAttribute="leading" secondItem="N1T-ZH-iTm" secondAttribute="leading" id="dei-fj-Qoh"/>
                             <constraint firstItem="vpH-Rs-Lvw" firstAttribute="bottom" secondItem="N1T-ZH-iTm" secondAttribute="bottom" constant="6" id="rYJ-e6-J2m"/>
                             <constraint firstItem="N1T-ZH-iTm" firstAttribute="top" secondItem="vpH-Rs-Lvw" secondAttribute="top" constant="6" id="vCV-dU-uTJ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="vpH-Rs-Lvw"/>
                     </view>
+                    <connections>
+                        <outlet property="display" destination="N1T-ZH-iTm" id="yB3-FV-dWT"/>
+                        <outlet property="indicator" destination="6sA-e3-7nr" id="apa-9i-8Zc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X2K-Yb-Rdo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -97,7 +117,7 @@
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hLt-MZ-v3F" customClass="RoundedButton" customModule="BrandNewCalculator" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="88" height="51.333333333333336"/>
-                                                <color key="backgroundColor" red="0.8972230537" green="0.82539061209999998" blue="0.91987230330000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" red="0.73653762570000003" green="0.64435469570000004" blue="0.78236040610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="42"/>
                                                 <state key="normal" title="MR">
                                                     <color key="titleColor" red="0.057900066020000002" green="0.0534777076" blue="0.06006107234" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -111,7 +131,7 @@
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0vA-nC-Icm" customClass="RoundedButton" customModule="BrandNewCalculator" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="54.333333333333343" width="88" height="51"/>
-                                                <color key="backgroundColor" red="0.8972230537" green="0.82539061209999998" blue="0.91987230330000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" red="0.73653762570000003" green="0.64435469570000004" blue="0.78236040610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="42"/>
                                                 <state key="normal" title="MS">
                                                     <color key="titleColor" red="0.057900066020000002" green="0.0534777076" blue="0.06006107234" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -121,11 +141,12 @@
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="buttonWasPressed:" destination="7TV-DS-JMV" eventType="touchUpInside" id="5GV-Km-PgL"/>
+                                                    <action selector="needToBeCalculate:" destination="7TV-DS-JMV" eventType="touchUpInside" id="um9-hR-GyT"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N0H-d4-utC" customClass="RoundedButton" customModule="BrandNewCalculator" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="108.33333333333333" width="88" height="51.333333333333329"/>
-                                                <color key="backgroundColor" red="0.8972230537" green="0.82539061209999998" blue="0.91987230330000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" red="0.73653762570000003" green="0.64435469570000004" blue="0.78236040610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="42"/>
                                                 <state key="normal" title="M+">
                                                     <color key="titleColor" red="0.057900066020000002" green="0.0534777076" blue="0.06006107234" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -135,11 +156,12 @@
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="buttonWasPressed:" destination="7TV-DS-JMV" eventType="touchUpInside" id="Bba-lm-enf"/>
+                                                    <action selector="needToBeCalculate:" destination="7TV-DS-JMV" eventType="touchUpInside" id="33T-SR-9fR"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="htQ-eT-kO6" customClass="RoundedButton" customModule="BrandNewCalculator" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="162.66666666666666" width="88" height="51"/>
-                                                <color key="backgroundColor" red="0.8972230537" green="0.82539061209999998" blue="0.91987230330000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" red="0.73653762570000003" green="0.64435469570000004" blue="0.78236040610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="42"/>
                                                 <state key="normal" title="M-">
                                                     <color key="titleColor" red="0.057900066020000002" green="0.0534777076" blue="0.06006107234" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -149,11 +171,12 @@
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="buttonWasPressed:" destination="7TV-DS-JMV" eventType="touchUpInside" id="Cfm-qc-uxS"/>
+                                                    <action selector="needToBeCalculate:" destination="7TV-DS-JMV" eventType="touchUpInside" id="cVM-c6-reR"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dCi-VP-9c3" customClass="RoundedButton" customModule="BrandNewCalculator" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="216.66666666666666" width="88" height="51.333333333333343"/>
-                                                <color key="backgroundColor" red="0.8972230537" green="0.82539061209999998" blue="0.91987230330000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" red="0.73653762570000003" green="0.64435469570000004" blue="0.78236040610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="42"/>
                                                 <state key="normal" title="MC">
                                                     <color key="titleColor" red="0.057900066020000002" green="0.0534777076" blue="0.06006107234" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -198,7 +221,7 @@
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gjI-kf-irP" customClass="RoundedButton" customModule="BrandNewCalculator" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="54.333333333333343" width="88.333333333333329" height="51"/>
-                                                <color key="backgroundColor" red="0.73653762570000003" green="0.64435469570000004" blue="0.78236040610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" red="0.8972230537" green="0.82539061209999998" blue="0.91987230330000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="38"/>
                                                 <state key="normal" title="sin">
                                                     <color key="titleColor" red="0.057900066020000002" green="0.0534777076" blue="0.06006107234" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -212,7 +235,7 @@
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SBV-0E-3nr" customClass="RoundedButton" customModule="BrandNewCalculator" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="108.33333333333333" width="88.333333333333329" height="51.333333333333329"/>
-                                                <color key="backgroundColor" red="0.73653762570000003" green="0.64435469570000004" blue="0.78236040610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" red="0.8972230537" green="0.82539061209999998" blue="0.91987230330000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="38"/>
                                                 <state key="normal" title="cos">
                                                     <color key="titleColor" red="0.057900066020000002" green="0.0534777076" blue="0.06006107234" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -226,7 +249,7 @@
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KiG-rw-3tg" customClass="RoundedButton" customModule="BrandNewCalculator" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="162.66666666666666" width="88.333333333333329" height="51"/>
-                                                <color key="backgroundColor" red="0.73653762570000003" green="0.64435469570000004" blue="0.78236040610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" red="0.8972230537" green="0.82539061209999998" blue="0.91987230330000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="38"/>
                                                 <state key="normal" title="tg">
                                                     <color key="titleColor" red="0.057900066020000002" green="0.0534777076" blue="0.06006107234" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -240,7 +263,7 @@
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AQn-Rx-aMS" customClass="RoundedButton" customModule="BrandNewCalculator" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="216.66666666666666" width="88.333333333333329" height="51.333333333333343"/>
-                                                <color key="backgroundColor" red="0.73653762570000003" green="0.64435469570000004" blue="0.78236040610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" red="0.8972230537" green="0.82539061209999998" blue="0.91987230330000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="38"/>
                                                 <state key="normal" title="ln">
                                                     <color key="titleColor" red="0.057900066020000002" green="0.0534777076" blue="0.06006107234" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -285,7 +308,7 @@
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a76-ld-fpU" customClass="RoundedButton" customModule="BrandNewCalculator" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="54.333333333333343" width="85" height="51"/>
-                                                <color key="backgroundColor" red="0.73653762570000003" green="0.64435469570000004" blue="0.78236040610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" red="0.8972230537" green="0.82539061209999998" blue="0.91987230330000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="42"/>
                                                 <state key="normal" title="^">
                                                     <color key="titleColor" red="0.057900066020000002" green="0.0534777076" blue="0.06006107234" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -299,7 +322,7 @@
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8RB-vq-E00" customClass="RoundedButton" customModule="BrandNewCalculator" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="108.33333333333333" width="85" height="51.333333333333329"/>
-                                                <color key="backgroundColor" red="0.73653762570000003" green="0.64435469570000004" blue="0.78236040610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" red="0.8972230537" green="0.82539061209999998" blue="0.91987230330000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="42"/>
                                                 <state key="normal" title="%">
                                                     <color key="titleColor" red="0.057900066020000002" green="0.0534777076" blue="0.06006107234" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -313,7 +336,7 @@
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0t9-P2-9lB" customClass="RoundedButton" customModule="BrandNewCalculator" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="162.66666666666666" width="85" height="51"/>
-                                                <color key="backgroundColor" red="0.73653762570000003" green="0.64435469570000004" blue="0.78236040610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" red="0.8972230537" green="0.82539061209999998" blue="0.91987230330000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="42"/>
                                                 <state key="normal" title="!">
                                                     <color key="titleColor" red="0.057900066020000002" green="0.0534777076" blue="0.06006107234" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -327,7 +350,7 @@
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BSh-Rm-fKV" customClass="RoundedButton" customModule="BrandNewCalculator" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="216.66666666666666" width="85" height="51.333333333333343"/>
-                                                <color key="backgroundColor" red="0.73653762570000003" green="0.64435469570000004" blue="0.78236040610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" red="0.8972230537" green="0.82539061209999998" blue="0.91987230330000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="42"/>
                                                 <state key="normal" title="√">
                                                     <color key="titleColor" red="0.057900066020000002" green="0.0534777076" blue="0.06006107234" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -358,7 +381,7 @@
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bre-P3-NdI" customClass="RoundedButton" customModule="BrandNewCalculator" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="90.666666666666671" height="103.66666666666667"/>
-                                                <color key="backgroundColor" red="0.73653762570000003" green="0.64435469570000004" blue="0.78236040610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" red="0.8972230537" green="0.82539061209999998" blue="0.91987230330000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="42"/>
                                                 <state key="normal" title="(">
                                                     <color key="titleColor" red="0.057900066020000002" green="0.0534777076" blue="0.06006107234" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -372,7 +395,7 @@
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aNz-7U-Uht" customClass="RoundedButton" customModule="BrandNewCalculator" customModuleProvider="target">
                                                 <rect key="frame" x="93.666666666666686" y="0.0" width="91" height="103.66666666666667"/>
-                                                <color key="backgroundColor" red="0.73653762570000003" green="0.64435469570000004" blue="0.78236040610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" red="0.8972230537" green="0.82539061209999998" blue="0.91987230330000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="42"/>
                                                 <state key="normal" title=")">
                                                     <color key="titleColor" red="0.057900066020000002" green="0.0534777076" blue="0.06006107234" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -396,6 +419,7 @@
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="buttonWasPressed:" destination="7TV-DS-JMV" eventType="touchUpInside" id="ncg-zE-flD"/>
+                                                    <action selector="eraseClear:" destination="7TV-DS-JMV" eventType="touchUpInside" id="7z3-sl-a8c"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sfq-RA-KUQ" customClass="RoundedButton" customModule="BrandNewCalculator" customModuleProvider="target">
@@ -410,12 +434,13 @@
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="buttonWasPressed:" destination="7TV-DS-JMV" eventType="touchUpInside" id="NZD-FV-Ujc"/>
+                                                    <action selector="eraseOne:" destination="7TV-DS-JMV" eventType="touchUpInside" id="YcG-Vn-Crr"/>
                                                 </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.23165847081218272" green="0.23165847081218272" blue="0.23165847081218272" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.057900066020000002" green="0.0534777076" blue="0.06006107234" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="Hpy-At-wII" secondAttribute="trailing" constant="3" id="FsM-qt-eWA"/>
                                     <constraint firstItem="Hpy-At-wII" firstAttribute="top" secondItem="lMI-ti-lRC" secondAttribute="top" constant="3" id="IYA-ja-3eU"/>
@@ -434,7 +459,7 @@
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hIA-mG-V07" customClass="RoundedButton" customModule="BrandNewCalculator" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="90.666666666666671" height="103"/>
-                                                        <color key="backgroundColor" red="0.96000555200000004" green="0.93397761629999998" blue="0.92581811150000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="backgroundColor" red="0.73653762570000003" green="0.64435469570000004" blue="0.78236040610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="42"/>
                                                         <state key="normal" title="7">
                                                             <color key="titleColor" red="0.057900066020000002" green="0.0534777076" blue="0.06006107234" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -444,11 +469,12 @@
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <action selector="buttonWasPressed:" destination="7TV-DS-JMV" eventType="touchUpInside" id="tA4-3O-E0L"/>
+                                                            <action selector="digitWasPressed:" destination="7TV-DS-JMV" eventType="touchUpInside" id="kA2-8Q-6Et"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1QV-vf-jPK" customClass="RoundedButton" customModule="BrandNewCalculator" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="106.00000000000003" width="90.666666666666671" height="103"/>
-                                                        <color key="backgroundColor" red="0.96000555200000004" green="0.93397761629999998" blue="0.92581811150000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="backgroundColor" red="0.73653762570000003" green="0.64435469570000004" blue="0.78236040610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="42"/>
                                                         <state key="normal" title="4">
                                                             <color key="titleColor" red="0.057900066020000002" green="0.0534777076" blue="0.06006107234" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -458,11 +484,12 @@
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <action selector="buttonWasPressed:" destination="7TV-DS-JMV" eventType="touchUpInside" id="E3F-2e-Pbl"/>
+                                                            <action selector="digitWasPressed:" destination="7TV-DS-JMV" eventType="touchUpInside" id="xgT-DI-Pdy"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3yT-VU-fVw" customClass="RoundedButton" customModule="BrandNewCalculator" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="212" width="90.666666666666671" height="103"/>
-                                                        <color key="backgroundColor" red="0.96000555200000004" green="0.93397761629999998" blue="0.92581811150000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="backgroundColor" red="0.73653762570000003" green="0.64435469570000004" blue="0.78236040610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="42"/>
                                                         <state key="normal" title="1">
                                                             <color key="titleColor" red="0.057900066020000002" green="0.0534777076" blue="0.06006107234" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -472,6 +499,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <action selector="buttonWasPressed:" destination="7TV-DS-JMV" eventType="touchUpInside" id="Ww5-FD-l3P"/>
+                                                            <action selector="digitWasPressed:" destination="7TV-DS-JMV" eventType="touchUpInside" id="cCB-B6-pWM"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PGh-Ps-75w" customClass="RoundedButton" customModule="BrandNewCalculator" customModuleProvider="target">
@@ -495,7 +523,7 @@
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FfE-bf-gMe" customClass="RoundedButton" customModule="BrandNewCalculator" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="91" height="103"/>
-                                                        <color key="backgroundColor" red="0.96000555200000004" green="0.93397761629999998" blue="0.92581811150000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="backgroundColor" red="0.73653762570000003" green="0.64435469570000004" blue="0.78236040610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="42"/>
                                                         <state key="normal" title="8">
                                                             <color key="titleColor" red="0.057900066020000002" green="0.0534777076" blue="0.06006107234" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -505,11 +533,12 @@
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <action selector="buttonWasPressed:" destination="7TV-DS-JMV" eventType="touchUpInside" id="gr0-jK-evp"/>
+                                                            <action selector="digitWasPressed:" destination="7TV-DS-JMV" eventType="touchUpInside" id="Mrg-mu-BAn"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZAE-oU-Knd" customClass="RoundedButton" customModule="BrandNewCalculator" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="106.00000000000003" width="91" height="103"/>
-                                                        <color key="backgroundColor" red="0.96000555200000004" green="0.93397761629999998" blue="0.92581811150000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="backgroundColor" red="0.73653762570000003" green="0.64435469570000004" blue="0.78236040610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="42"/>
                                                         <state key="normal" title="5">
                                                             <color key="titleColor" red="0.057900066020000002" green="0.0534777076" blue="0.06006107234" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -519,11 +548,12 @@
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <action selector="buttonWasPressed:" destination="7TV-DS-JMV" eventType="touchUpInside" id="BGc-R7-Ma6"/>
+                                                            <action selector="digitWasPressed:" destination="7TV-DS-JMV" eventType="touchUpInside" id="bme-MH-Ly8"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="deH-fm-Nv8" customClass="RoundedButton" customModule="BrandNewCalculator" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="212" width="91" height="103"/>
-                                                        <color key="backgroundColor" red="0.96000555200000004" green="0.93397761629999998" blue="0.92581811150000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="backgroundColor" red="0.73653762570000003" green="0.64435469570000004" blue="0.78236040610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="42"/>
                                                         <state key="normal" title="2">
                                                             <color key="titleColor" red="0.057900066020000002" green="0.0534777076" blue="0.06006107234" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -533,11 +563,12 @@
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <action selector="buttonWasPressed:" destination="7TV-DS-JMV" eventType="touchUpInside" id="Kjz-sL-AVG"/>
+                                                            <action selector="digitWasPressed:" destination="7TV-DS-JMV" eventType="touchUpInside" id="k5f-4O-mKy"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d9q-4L-svG" customClass="RoundedButton" customModule="BrandNewCalculator" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="318" width="91" height="103"/>
-                                                        <color key="backgroundColor" red="0.96000555200000004" green="0.93397761629999998" blue="0.92581811150000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="backgroundColor" red="0.73653762570000003" green="0.64435469570000004" blue="0.78236040610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="42"/>
                                                         <state key="normal" title="0">
                                                             <color key="titleColor" red="0.057900066020000002" green="0.0534777076" blue="0.06006107234" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -547,6 +578,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <action selector="buttonWasPressed:" destination="7TV-DS-JMV" eventType="touchUpInside" id="keS-wL-dKH"/>
+                                                            <action selector="digitWasPressed:" destination="7TV-DS-JMV" eventType="touchUpInside" id="SbS-jU-MW5"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -556,7 +588,7 @@
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dmr-j2-vqU" customClass="RoundedButton" customModule="BrandNewCalculator" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="90.666666666666671" height="103"/>
-                                                        <color key="backgroundColor" red="0.96000555200000004" green="0.93397761629999998" blue="0.92581811150000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="backgroundColor" red="0.73653762570000003" green="0.64435469570000004" blue="0.78236040610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="42"/>
                                                         <state key="normal" title="9">
                                                             <color key="titleColor" red="0.057900066020000002" green="0.0534777076" blue="0.06006107234" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -566,11 +598,12 @@
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <action selector="buttonWasPressed:" destination="7TV-DS-JMV" eventType="touchUpInside" id="3pW-5k-3zU"/>
+                                                            <action selector="digitWasPressed:" destination="7TV-DS-JMV" eventType="touchUpInside" id="Ooc-rc-CsY"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tkc-nD-jYJ" customClass="RoundedButton" customModule="BrandNewCalculator" customModuleProvider="target">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tkc-nD-jYJ" userLabel="6" customClass="RoundedButton" customModule="BrandNewCalculator" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="106.00000000000003" width="90.666666666666671" height="103"/>
-                                                        <color key="backgroundColor" red="0.96000555200000004" green="0.93397761629999998" blue="0.92581811150000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="backgroundColor" red="0.73653762570000003" green="0.64435469570000004" blue="0.78236040610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="42"/>
                                                         <state key="normal" title="6">
                                                             <color key="titleColor" red="0.057900066020000002" green="0.0534777076" blue="0.06006107234" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -580,11 +613,12 @@
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <action selector="buttonWasPressed:" destination="7TV-DS-JMV" eventType="touchUpInside" id="b3C-vf-yX2"/>
+                                                            <action selector="digitWasPressed:" destination="7TV-DS-JMV" eventType="touchUpInside" id="0zr-cf-OkG"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="guZ-4y-V4s" customClass="RoundedButton" customModule="BrandNewCalculator" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="212" width="90.666666666666671" height="103"/>
-                                                        <color key="backgroundColor" red="0.96000555200000004" green="0.93397761629999998" blue="0.92581811150000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="backgroundColor" red="0.73653762570000003" green="0.64435469570000004" blue="0.78236040610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="42"/>
                                                         <state key="normal" title="3">
                                                             <color key="titleColor" red="0.057900066020000002" green="0.0534777076" blue="0.06006107234" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -594,11 +628,12 @@
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <action selector="buttonWasPressed:" destination="7TV-DS-JMV" eventType="touchUpInside" id="PKb-RX-Ftg"/>
+                                                            <action selector="digitWasPressed:" destination="7TV-DS-JMV" eventType="touchUpInside" id="EjE-gB-tD4"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z0f-aK-vxt" customClass="RoundedButton" customModule="BrandNewCalculator" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="318" width="90.666666666666671" height="103"/>
-                                                        <color key="backgroundColor" red="0.73653762570000003" green="0.64435469570000004" blue="0.78236040610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="backgroundColor" red="1" green="0.91250973930000001" blue="0.99831244689999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="42"/>
                                                         <state key="normal" title="=">
                                                             <color key="titleColor" red="0.057900066020000002" green="0.0534777076" blue="0.06006107234" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -607,7 +642,7 @@
                                                             <userDefinedRuntimeAttribute type="boolean" keyPath="rounded" value="YES"/>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
-                                                            <action selector="buttonWasPressed:" destination="7TV-DS-JMV" eventType="touchUpInside" id="2ok-Ll-xBG"/>
+                                                            <action selector="needToBeCalculate:" destination="7TV-DS-JMV" eventType="touchUpInside" id="4So-Ke-m8D"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -626,17 +661,17 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pRk-EL-LvH">
                                 <rect key="frame" x="281.33333333333331" y="150.66666666666663" width="93.666666666666686" height="427"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d9A-O2-Zj1">
-                                        <rect key="frame" x="0.0" y="0.0" width="93.666666666666671" height="2027.6666666666667"/>
+                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d9A-O2-Zj1">
+                                        <rect key="frame" x="0.0" y="0.0" width="93.666666666666671" height="2027.3333333333333"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Eu4-uF-jz8" userLabel="innerOperations">
-                                                <rect key="frame" x="0.0" y="0.0" width="93.666666666666671" height="427"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="93.666666666666671" height="427.66666666666669"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="B6x-Kx-dYp">
-                                                        <rect key="frame" x="0.0" y="3" width="90.666666666666671" height="421"/>
+                                                        <rect key="frame" x="0.0" y="3" width="90.666666666666671" height="421.66666666666669"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YBr-HF-Enr" customClass="RoundedButton" customModule="BrandNewCalculator" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="90.666666666666671" height="103"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="90.666666666666671" height="103.33333333333333"/>
                                                                 <color key="backgroundColor" red="0.8972230537" green="0.82539061209999998" blue="0.91987230330000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="42"/>
                                                                 <state key="normal" title="+">
@@ -650,7 +685,7 @@
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cXX-Iw-o3e" customClass="RoundedButton" customModule="BrandNewCalculator" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="106.00000000000003" width="90.666666666666671" height="103"/>
+                                                                <rect key="frame" x="0.0" y="106.33333333333334" width="90.666666666666671" height="103"/>
                                                                 <color key="backgroundColor" red="0.8972230537" green="0.82539061209999998" blue="0.91987230330000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="42"/>
                                                                 <state key="normal" title="-">
@@ -664,7 +699,7 @@
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mgr-X5-z9Z" customClass="RoundedButton" customModule="BrandNewCalculator" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="212" width="90.666666666666671" height="103"/>
+                                                                <rect key="frame" x="0.0" y="212.33333333333334" width="90.666666666666671" height="103.33333333333334"/>
                                                                 <color key="backgroundColor" red="0.8972230537" green="0.82539061209999998" blue="0.91987230330000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="42"/>
                                                                 <state key="normal" title="*">
@@ -678,7 +713,7 @@
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="48f-eM-Je8" customClass="RoundedButton" customModule="BrandNewCalculator" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="318" width="90.666666666666671" height="103"/>
+                                                                <rect key="frame" x="0.0" y="318.66666666666663" width="90.666666666666671" height="103"/>
                                                                 <color key="backgroundColor" red="0.8972230537" green="0.82539061209999998" blue="0.91987230330000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="42"/>
                                                                 <state key="normal" title="/">
@@ -703,14 +738,14 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vf4-JB-cNG" userLabel="innerDiff">
-                                                <rect key="frame" x="0.0" y="427.00000000000006" width="93.666666666666671" height="534.33333333333348"/>
+                                                <rect key="frame" x="0.0" y="427.66666666666674" width="93.666666666666671" height="534"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="pdc-Te-Qg0">
-                                                        <rect key="frame" x="0.0" y="3" width="90.666666666666671" height="531.33333333333337"/>
+                                                        <rect key="frame" x="0.0" y="3" width="90.666666666666671" height="531"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q7k-vW-1Jr" customClass="RoundedButton" customModule="BrandNewCalculator" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="90.666666666666671" height="104"/>
-                                                                <color key="backgroundColor" red="0.8972230537" green="0.82539061209999998" blue="0.91987230330000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="90.666666666666671" height="103.66666666666667"/>
+                                                                <color key="backgroundColor" red="0.73653762570000003" green="0.64435469570000004" blue="0.78236040610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="42"/>
                                                                 <state key="normal" title="e">
                                                                     <color key="titleColor" red="0.057900066020000002" green="0.0534777076" blue="0.06006107234" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -723,7 +758,7 @@
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yxN-09-9nE" customClass="RoundedButton" customModule="BrandNewCalculator" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="107" width="90.666666666666671" height="103.66666666666669"/>
+                                                                <rect key="frame" x="0.0" y="106.66666666666663" width="90.666666666666671" height="104"/>
                                                                 <color key="backgroundColor" red="0.8972230537" green="0.82539061209999998" blue="0.91987230330000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="42"/>
                                                                 <state key="normal" title="^">
@@ -737,7 +772,7 @@
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ok6-36-20h" customClass="RoundedButton" customModule="BrandNewCalculator" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="213.66666666666674" width="90.666666666666671" height="104"/>
+                                                                <rect key="frame" x="0.0" y="213.6666666666666" width="90.666666666666671" height="103.66666666666666"/>
                                                                 <color key="backgroundColor" red="0.8972230537" green="0.82539061209999998" blue="0.91987230330000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="42"/>
                                                                 <state key="normal" title="%">
@@ -751,7 +786,7 @@
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i8E-rr-KrZ" customClass="RoundedButton" customModule="BrandNewCalculator" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="320.66666666666674" width="90.666666666666671" height="103.66666666666669"/>
+                                                                <rect key="frame" x="0.0" y="320.33333333333326" width="90.666666666666671" height="104"/>
                                                                 <color key="backgroundColor" red="0.8972230537" green="0.82539061209999998" blue="0.91987230330000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="42"/>
                                                                 <state key="normal" title="!">
@@ -765,7 +800,7 @@
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7CP-pv-wNK" customClass="RoundedButton" customModule="BrandNewCalculator" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="427.33333333333337" width="90.666666666666671" height="104"/>
+                                                                <rect key="frame" x="0.0" y="427.33333333333326" width="90.666666666666671" height="103.66666666666663"/>
                                                                 <color key="backgroundColor" red="0.8972230537" green="0.82539061209999998" blue="0.91987230330000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="42"/>
                                                                 <state key="normal" title="√">
@@ -790,14 +825,14 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8ph-US-rVW" userLabel="innerTrig">
-                                                <rect key="frame" x="0.0" y="961.33333333333348" width="93.666666666666671" height="533"/>
+                                                <rect key="frame" x="0.0" y="961.66666666666652" width="93.666666666666671" height="533"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="cdg-Bl-oc9">
                                                         <rect key="frame" x="0.0" y="3" width="90.666666666666671" height="530"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Nw-R9-dV0" customClass="RoundedButton" customModule="BrandNewCalculator" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="90.666666666666671" height="103.66666666666667"/>
-                                                                <color key="backgroundColor" red="0.8972230537" green="0.82539061209999998" blue="0.91987230330000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <color key="backgroundColor" red="0.73653762570000003" green="0.64435469570000004" blue="0.78236040610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="42"/>
                                                                 <state key="normal" title="π">
                                                                     <color key="titleColor" red="0.057900066020000002" green="0.0534777076" blue="0.06006107234" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -824,7 +859,7 @@
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8et-O5-zkC" customClass="RoundedButton" customModule="BrandNewCalculator" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="213.33333333333329" width="90.666666666666671" height="103.33333333333334"/>
+                                                                <rect key="frame" x="0.0" y="213.33333333333351" width="90.666666666666671" height="103.33333333333334"/>
                                                                 <color key="backgroundColor" red="0.8972230537" green="0.82539061209999998" blue="0.91987230330000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="38"/>
                                                                 <state key="normal" title="cos">
@@ -852,7 +887,7 @@
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dW9-I7-jL2" customClass="RoundedButton" customModule="BrandNewCalculator" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="426.33333333333326" width="90.666666666666671" height="103.66666666666663"/>
+                                                                <rect key="frame" x="0.0" y="426.33333333333348" width="90.666666666666671" height="103.66666666666663"/>
                                                                 <color key="backgroundColor" red="0.8972230537" green="0.82539061209999998" blue="0.91987230330000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="38"/>
                                                                 <state key="normal" title="ln">
@@ -877,10 +912,10 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RGn-UB-sSt" userLabel="innerMemo">
-                                                <rect key="frame" x="0.0" y="1494.3333333333333" width="93.666666666666671" height="533.33333333333326"/>
+                                                <rect key="frame" x="0.0" y="1494.6666666666665" width="93.666666666666671" height="532.66666666666652"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="tTT-iG-tfQ">
-                                                        <rect key="frame" x="0.0" y="3" width="90.666666666666671" height="527.33333333333337"/>
+                                                        <rect key="frame" x="0.0" y="3" width="90.666666666666671" height="526.66666666666663"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wRx-T1-5Xg" customClass="RoundedButton" customModule="BrandNewCalculator" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="90.666666666666671" height="103"/>
@@ -908,10 +943,11 @@
                                                                 </userDefinedRuntimeAttributes>
                                                                 <connections>
                                                                     <action selector="buttonWasPressed:" destination="7TV-DS-JMV" eventType="touchUpInside" id="DIB-zT-7DO"/>
+                                                                    <action selector="needToBeCalculate:" destination="7TV-DS-JMV" eventType="touchUpInside" id="xTI-qD-h2t"/>
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d5c-Sy-RWz" customClass="RoundedButton" customModule="BrandNewCalculator" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="212.00000000000003" width="90.666666666666671" height="103.33333333333334"/>
+                                                                <rect key="frame" x="0.0" y="211.99999999999997" width="90.666666666666671" height="102.66666666666666"/>
                                                                 <color key="backgroundColor" red="0.8972230537" green="0.82539061209999998" blue="0.91987230330000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="42"/>
                                                                 <state key="normal" title="M-">
@@ -922,10 +958,11 @@
                                                                 </userDefinedRuntimeAttributes>
                                                                 <connections>
                                                                     <action selector="buttonWasPressed:" destination="7TV-DS-JMV" eventType="touchUpInside" id="Cna-jI-UdE"/>
+                                                                    <action selector="needToBeCalculate:" destination="7TV-DS-JMV" eventType="touchUpInside" id="19B-ZV-BLL"/>
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LYV-MR-wI2" customClass="RoundedButton" customModule="BrandNewCalculator" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="318.33333333333326" width="90.666666666666671" height="103"/>
+                                                                <rect key="frame" x="0.0" y="317.66666666666674" width="90.666666666666671" height="103"/>
                                                                 <color key="backgroundColor" red="0.8972230537" green="0.82539061209999998" blue="0.91987230330000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="42"/>
                                                                 <state key="normal" title="MR">
@@ -936,10 +973,11 @@
                                                                 </userDefinedRuntimeAttributes>
                                                                 <connections>
                                                                     <action selector="buttonWasPressed:" destination="7TV-DS-JMV" eventType="touchUpInside" id="VQ0-56-OzM"/>
+                                                                    <action selector="needToBeCalculate:" destination="7TV-DS-JMV" eventType="touchUpInside" id="gPu-c4-ms3"/>
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="osl-tz-1cc" customClass="RoundedButton" customModule="BrandNewCalculator" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="424.33333333333348" width="90.666666666666671" height="103"/>
+                                                                <rect key="frame" x="0.0" y="423.66666666666674" width="90.666666666666671" height="103"/>
                                                                 <color key="backgroundColor" red="0.8972230537" green="0.82539061209999998" blue="0.91987230330000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="42"/>
                                                                 <state key="normal" title="MC">
@@ -993,6 +1031,7 @@
                                             <constraint firstItem="8ph-US-rVW" firstAttribute="leading" secondItem="d9A-O2-Zj1" secondAttribute="leading" id="peW-g1-9sN"/>
                                             <constraint firstItem="RGn-UB-sSt" firstAttribute="width" secondItem="d9A-O2-Zj1" secondAttribute="width" id="tGs-on-HEO"/>
                                             <constraint firstItem="Vf4-JB-cNG" firstAttribute="width" secondItem="d9A-O2-Zj1" secondAttribute="width" id="ypR-zS-xmQ"/>
+                                            <constraint firstItem="Vf4-JB-cNG" firstAttribute="centerX" secondItem="d9A-O2-Zj1" secondAttribute="centerX" id="zPU-6r-ui1"/>
                                             <constraint firstItem="Eu4-uF-jz8" firstAttribute="height" secondItem="d9A-O2-Zj1" secondAttribute="height" multiplier="4:19" id="zik-eI-Ijm">
                                                 <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
                                             </constraint>
@@ -1015,6 +1054,7 @@
                                                 <exclude reference="cQx-0l-DiF"/>
                                                 <exclude reference="hea-CG-Ofq"/>
                                                 <exclude reference="ypR-zS-xmQ"/>
+                                                <exclude reference="zPU-6r-ui1"/>
                                                 <exclude reference="2yp-VA-ScV"/>
                                                 <exclude reference="4U0-VY-Xqy"/>
                                                 <exclude reference="9PF-40-gxd"/>
@@ -1045,6 +1085,7 @@
                                                 <include reference="cQx-0l-DiF"/>
                                                 <include reference="hea-CG-Ofq"/>
                                                 <include reference="ypR-zS-xmQ"/>
+                                                <include reference="zPU-6r-ui1"/>
                                                 <include reference="2yp-VA-ScV"/>
                                                 <include reference="4U0-VY-Xqy"/>
                                                 <include reference="9PF-40-gxd"/>
@@ -1063,6 +1104,7 @@
                                 <constraints>
                                     <constraint firstItem="d9A-O2-Zj1" firstAttribute="leading" secondItem="pRk-EL-LvH" secondAttribute="leading" id="Ido-c6-FYq"/>
                                     <constraint firstItem="d9A-O2-Zj1" firstAttribute="height" secondItem="pRk-EL-LvH" secondAttribute="height" multiplier="19:4" id="NmH-cr-7zZ"/>
+                                    <constraint firstItem="d9A-O2-Zj1" firstAttribute="width" secondItem="pRk-EL-LvH" secondAttribute="width" id="SFZ-bw-S0b"/>
                                     <constraint firstItem="d9A-O2-Zj1" firstAttribute="centerX" secondItem="pRk-EL-LvH" secondAttribute="centerX" id="TOG-hv-1QC"/>
                                     <constraint firstAttribute="trailing" secondItem="d9A-O2-Zj1" secondAttribute="trailing" id="ZLh-q8-Ejj"/>
                                     <constraint firstItem="d9A-O2-Zj1" firstAttribute="top" secondItem="pRk-EL-LvH" secondAttribute="top" id="aoW-w4-Wu8"/>
@@ -1096,14 +1138,14 @@
                                 </variation>
                             </scrollView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0pr-08-nRf" userLabel="operations">
-                                <rect key="frame" x="589.33333333333337" y="54.666666666666671" width="90.666666666666629" height="219.33333333333331"/>
+                                <rect key="frame" x="589" y="54.666666666666671" width="91" height="219.33333333333331"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="Xhl-tB-10L">
-                                        <rect key="frame" x="0.0" y="3" width="87.666666666666671" height="213.33333333333334"/>
+                                        <rect key="frame" x="0.0" y="3" width="88" height="213.33333333333334"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Tc-JY-XIV" customClass="RoundedButton" customModule="BrandNewCalculator" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="87.666666666666671" height="51"/>
-                                                <color key="backgroundColor" red="0.73653762570000003" green="0.64435469570000004" blue="0.78236040610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="88" height="51"/>
+                                                <color key="backgroundColor" red="0.8972230537" green="0.82539061209999998" blue="0.91987230330000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="42"/>
                                                 <state key="normal" title="+">
                                                     <color key="titleColor" red="0.057900066020000002" green="0.0534777076" blue="0.06006107234" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1116,8 +1158,8 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ffz-fI-i6t" customClass="RoundedButton" customModule="BrandNewCalculator" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="54" width="87.666666666666671" height="51.333333333333343"/>
-                                                <color key="backgroundColor" red="0.73653762570000003" green="0.64435469570000004" blue="0.78236040610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <rect key="frame" x="0.0" y="54" width="88" height="51.333333333333343"/>
+                                                <color key="backgroundColor" red="0.8972230537" green="0.82539061209999998" blue="0.91987230330000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="42"/>
                                                 <state key="normal" title="-">
                                                     <color key="titleColor" red="0.057900066020000002" green="0.0534777076" blue="0.06006107234" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1130,8 +1172,8 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cPd-aQ-t5H" customClass="RoundedButton" customModule="BrandNewCalculator" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="108.33333333333334" width="87.666666666666671" height="51"/>
-                                                <color key="backgroundColor" red="0.73653762570000003" green="0.64435469570000004" blue="0.78236040610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <rect key="frame" x="0.0" y="108.33333333333334" width="88" height="51"/>
+                                                <color key="backgroundColor" red="0.8972230537" green="0.82539061209999998" blue="0.91987230330000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="42"/>
                                                 <state key="normal" title="*">
                                                     <color key="titleColor" red="0.057900066020000002" green="0.0534777076" blue="0.06006107234" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1144,8 +1186,8 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TcR-Tk-Owi" customClass="RoundedButton" customModule="BrandNewCalculator" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="162.33333333333334" width="87.666666666666671" height="51"/>
-                                                <color key="backgroundColor" red="0.73653762570000003" green="0.64435469570000004" blue="0.78236040610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <rect key="frame" x="0.0" y="162.33333333333334" width="88" height="51"/>
+                                                <color key="backgroundColor" red="0.8972230537" green="0.82539061209999998" blue="0.91987230330000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="42"/>
                                                 <state key="normal" title="/">
                                                     <color key="titleColor" red="0.057900066020000002" green="0.0534777076" blue="0.06006107234" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1220,16 +1262,16 @@
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="SIG-uw-Qnu"/>
-                                <exclude reference="Hjt-t6-jOG"/>
-                                <exclude reference="TSp-KC-fkb"/>
-                                <exclude reference="eB4-dB-tzM"/>
-                                <exclude reference="qiC-c9-jTd"/>
                                 <exclude reference="Api-Rp-Cub"/>
                                 <exclude reference="JqV-mD-MU2"/>
                                 <exclude reference="jrW-a9-o2H"/>
                                 <exclude reference="4oT-DJ-s29"/>
                                 <exclude reference="Wp8-TS-cyy"/>
                                 <exclude reference="joM-Nk-wHR"/>
+                                <exclude reference="Hjt-t6-jOG"/>
+                                <exclude reference="TSp-KC-fkb"/>
+                                <exclude reference="eB4-dB-tzM"/>
+                                <exclude reference="qiC-c9-jTd"/>
                                 <exclude reference="4fl-Na-jX8"/>
                                 <exclude reference="yeb-Jn-2f5"/>
                                 <exclude reference="KHK-Q0-E1x"/>
@@ -1249,14 +1291,14 @@
                             </mask>
                             <mask key="constraints">
                                 <include reference="SIG-uw-Qnu"/>
-                                <include reference="TSp-KC-fkb"/>
-                                <include reference="qiC-c9-jTd"/>
                                 <include reference="Api-Rp-Cub"/>
                                 <include reference="JqV-mD-MU2"/>
                                 <include reference="jrW-a9-o2H"/>
                                 <include reference="4oT-DJ-s29"/>
                                 <include reference="Wp8-TS-cyy"/>
                                 <include reference="joM-Nk-wHR"/>
+                                <include reference="TSp-KC-fkb"/>
+                                <include reference="qiC-c9-jTd"/>
                                 <include reference="yeb-Jn-2f5"/>
                                 <include reference="NTA-KH-wKk"/>
                                 <include reference="qT4-Cx-bEK"/>
@@ -1278,7 +1320,29 @@
                         </variation>
                     </view>
                     <connections>
-                        <outlet property="e" destination="FfE-bf-gMe" id="4dw-Yg-d9J"/>
+                        <outlet property="dot" destination="PGh-Ps-75w" id="9fi-cp-4vF"/>
+                        <outlet property="equal" destination="Z0f-aK-vxt" id="D1v-BK-lPI"/>
+                        <outlet property="factorial" destination="0t9-P2-9lB" id="RdS-W7-ytx"/>
+                        <outlet property="leftBracket" destination="bre-P3-NdI" id="OAg-07-rMf"/>
+                        <outlet property="memoClean" destination="dCi-VP-9c3" id="ghb-gP-ZRr"/>
+                        <outlet property="memoRead" destination="hLt-MZ-v3F" id="zHu-j6-K7W"/>
+                        <outlet property="minus" destination="Ffz-fI-i6t" id="0rs-qm-iTh"/>
+                        <outlet property="rightBracket" destination="aNz-7U-Uht" id="2Qp-DN-dDH"/>
+                        <outlet property="sqrt" destination="BSh-Rm-fKV" id="Ml5-Ho-CYb"/>
+                        <outletCollection property="memo" destination="0vA-nC-Icm" collectionClass="NSMutableArray" id="2Ij-He-1vd"/>
+                        <outletCollection property="memo" destination="N0H-d4-utC" collectionClass="NSMutableArray" id="QRc-pB-4Ui"/>
+                        <outletCollection property="memo" destination="htQ-eT-kO6" collectionClass="NSMutableArray" id="EPM-qj-qHF"/>
+                        <outletCollection property="binaryOperations" destination="1Tc-JY-XIV" collectionClass="NSMutableArray" id="RnY-vW-Rj0"/>
+                        <outletCollection property="binaryOperations" destination="cPd-aQ-t5H" collectionClass="NSMutableArray" id="EMf-rq-zqb"/>
+                        <outletCollection property="binaryOperations" destination="TcR-Tk-Owi" collectionClass="NSMutableArray" id="QsA-5E-mq1"/>
+                        <outletCollection property="binaryOperations" destination="a76-ld-fpU" collectionClass="NSMutableArray" id="KuD-KO-iNf"/>
+                        <outletCollection property="binaryOperations" destination="8RB-vq-E00" collectionClass="NSMutableArray" id="bkE-rM-IUS"/>
+                        <outletCollection property="trigOperations" destination="gjI-kf-irP" collectionClass="NSMutableArray" id="TBl-ki-GPh"/>
+                        <outletCollection property="trigOperations" destination="SBV-0E-3nr" collectionClass="NSMutableArray" id="JTF-BE-NP1"/>
+                        <outletCollection property="trigOperations" destination="KiG-rw-3tg" collectionClass="NSMutableArray" id="5nv-XC-MEI"/>
+                        <outletCollection property="trigOperations" destination="AQn-Rx-aMS" collectionClass="NSMutableArray" id="xwG-nS-Tq3"/>
+                        <outletCollection property="constants" destination="CsV-BT-wBK" collectionClass="NSMutableArray" id="2t8-q4-4XH"/>
+                        <outletCollection property="constants" destination="Cvs-wn-PZz" collectionClass="NSMutableArray" id="YVF-Tv-gca"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Sc-vt-fdL" userLabel="First Responder" sceneMemberID="firstResponder"/>
