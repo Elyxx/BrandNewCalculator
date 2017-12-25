@@ -15,6 +15,7 @@
 		254554011FD99C3900C801B6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 254553FF1FD99C3900C801B6 /* LaunchScreen.storyboard */; };
 		256EEBF61FE282F700E83A48 /* RoundedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256EEBF51FE282F700E83A48 /* RoundedLabel.swift */; };
 		25752BFE1FE16797000C2A67 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25752BFD1FE16797000C2A67 /* RoundedButton.swift */; };
+		257D9F061FF1131400AC237D /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257D9F051FF1131400AC237D /* Protocols.swift */; };
 		2587B8091FE16C4100036495 /* InputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2587B8081FE16C4100036495 /* InputViewController.swift */; };
 		2587B80B1FE16C4F00036495 /* OutputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2587B80A1FE16C4F00036495 /* OutputViewController.swift */; };
 		259834A81FE93E8300D277D3 /* MachineBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259834A71FE93E8300D277D3 /* MachineBrain.swift */; };
@@ -31,6 +32,7 @@
 		254554021FD99C3900C801B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		256EEBF51FE282F700E83A48 /* RoundedLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedLabel.swift; sourceTree = "<group>"; };
 		25752BFD1FE16797000C2A67 /* RoundedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
+		257D9F051FF1131400AC237D /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		2587B8081FE16C4100036495 /* InputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputViewController.swift; sourceTree = "<group>"; };
 		2587B80A1FE16C4F00036495 /* OutputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputViewController.swift; sourceTree = "<group>"; };
 		259834A71FE93E8300D277D3 /* MachineBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MachineBrain.swift; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 			children = (
 				254553F31FD99C3900C801B6 /* AppDelegate.swift */,
 				2587B8081FE16C4100036495 /* InputViewController.swift */,
+				257D9F051FF1131400AC237D /* Protocols.swift */,
 				259834A71FE93E8300D277D3 /* MachineBrain.swift */,
 				25752BFD1FE16797000C2A67 /* RoundedButton.swift */,
 				256EEBF51FE282F700E83A48 /* RoundedLabel.swift */,
@@ -157,6 +160,7 @@
 				256EEBF61FE282F700E83A48 /* RoundedLabel.swift in Sources */,
 				254553F61FD99C3900C801B6 /* ViewController.swift in Sources */,
 				2587B80B1FE16C4F00036495 /* OutputViewController.swift in Sources */,
+				257D9F061FF1131400AC237D /* Protocols.swift in Sources */,
 				2587B8091FE16C4100036495 /* InputViewController.swift in Sources */,
 				254553FC1FD99C3900C801B6 /* BrandNewCalculator.xcdatamodeld in Sources */,
 				254553F41FD99C3900C801B6 /* AppDelegate.swift in Sources */,

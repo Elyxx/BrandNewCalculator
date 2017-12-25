@@ -11,16 +11,60 @@ import UIKit
 class ViewController: UIViewController, InputDelegate {
     
     let segueToInput = "toInput"
-    let segueToOutput = "toOutput"
-    
+    let segueToOutput = "toOuput"
+    var outputString = ""
+    var customInput = [String]()
+    var calculator = CalcBrain()
+    var outputViewController :OutputViewController? = nil
     
     
     func symbolReceived(_ symbol: String) {
-        //if isDigit(sender.currentTitle) {
-            
+        /*if customInput.isEmpty {
+            if outputString.isEmpty {
+                
+            }
+            else {
+                customInput.insert(outputString, at:0)
+                customInput.insert(symbol, at:0)
+                outputString += symbol
+                outputViewController?.display(outputString)
+            }
+        }
+        else {*/
+            customInput.insert(symbol, at:0)
+            outputString += symbol
+            outputViewController?.display(symbol)
         //}
     }
     
+    func deleteLast() {
+        if customInput.isEmpty {
+            outputViewController?.display("0")
+        }
+        else {
+            for item in customInput.reversed(){
+                outputString += item
+            }
+            outputViewController?.display(outputString)
+        }
+    }
+    
+    func clearDisplay() {
+        outputString = ""
+        customInput = []
+        outputViewController?.display("0")
+    }
+    
+    func beginProcessing() {
+        let resultNumber = calculator.processing(input: customInput)
+        customInput = []
+        outputString = String(resultNumber)
+        if outputString.hasSuffix(".0") {
+            outputString.removeLast()
+            outputString.removeLast()
+        }
+        outputViewController?.display(outputString)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -37,12 +81,8 @@ class ViewController: UIViewController, InputDelegate {
             inputViewController?.delegate = self
         }
         else if segue.identifier == segueToOutput {
-         //   outputViewController = segue.destination as? OutputViewController
+            outputViewController = segue.destination as? OutputViewController
         }
-    }
-    
-    func isDigit(_ : String?) -> Bool{
-        return true
     }
 }
 
@@ -52,9 +92,6 @@ enum ReceivedSymbol: String {
     case equal
 }
 
-protocol InputDelegate: class {
-    //var customInput = [String]() {get set}
-    func symbolReceived(_ symbol: String)//, _ group: ReceivedSymbol)
-}
+
 
 

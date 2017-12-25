@@ -10,20 +10,27 @@ import UIKit
 
 class OutputViewController: UIViewController {
 
-    @IBOutlet weak var display: RoundedLabel!
     
+    @IBOutlet weak var resultWindow: RoundedLabel!
     @IBOutlet weak var indicator: UILabel!
-    
+ 
+    let displayMargin: CGFloat = 10
+   
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
+    func display(_ result: String){
+        let width = resultWindow.intrinsicContentSize.width
+        if width > ( resultWindow.frame.width - displayMargin ){
+            print("limit has been reached")
+        }
+        resultWindow.text = result
+    }
 
     /*
     // MARK: - Navigation
