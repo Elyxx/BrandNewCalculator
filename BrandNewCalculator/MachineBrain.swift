@@ -43,7 +43,6 @@ class CalcBrain: ProcessDelegate {
                 initStack.insert(item, at:0)
             }
         }
-        print("this is new stack")
         
         if initStack[0] == "-" {
             initStack.insert("0", at: 0)
@@ -52,16 +51,13 @@ class CalcBrain: ProcessDelegate {
             initStack.insert("+", at: 0)
             initStack.insert("0", at: 0)
         }
-        for item in initStack{            print(item)        }
-        print("end of stack... i cannot wait for this DEMO to come... ")
         ///end of formatting
         return getMiddleResult(argument: Double(getNextItem())!)
     }
     
-    func getNextItem()->String {
+    func getNextItem() -> String {
         if initStack.isEmpty {
-            print("stack is empty")
-            return "0"
+             return "0"
         }
         var tmp = initStack.removeFirst()
         
@@ -75,7 +71,7 @@ class CalcBrain: ProcessDelegate {
         case "(":
             return tmp
         case "π":
-            return "3.14159"
+            return String(Double.pi)// "3.14159"
         case "e":
             return "2.71828"
         default:
@@ -100,7 +96,7 @@ class CalcBrain: ProcessDelegate {
         if currentOperation == ")" {         return argument        }
         var argumentSecond = 0.0
         
-        if initStack[0] == "(" {
+        if !initStack.isEmpty && initStack[0] == "(" {
             initStack.removeFirst()
             while initStack.isEmpty == false && initStack[0] == "(" {
                 initStack.removeFirst()
@@ -144,11 +140,9 @@ class CalcBrain: ProcessDelegate {
         
     }
     
-    //func formatStack(input: [String]){    }
-    
     
 }
-//end of class - how this happend??
+
 func additionFunc(first:Double, second:Double)->Double{
     return first+second
 }

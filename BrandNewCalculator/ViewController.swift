@@ -9,70 +9,37 @@
 import UIKit
 
 class ViewController: UIViewController, InputDelegate {
-    
     let segueToInput = "toInput"
     let segueToOutput = "toOuput"
-    var outputString = ""
-    var customInput = [String]()
+   
     var calculator = CalcBrain()
     var outputViewController :OutputViewController? = nil
     
-    
-    func symbolReceived(_ symbol: String) {
-        /*if customInput.isEmpty {
-            if outputString.isEmpty {
-                
-            }
-            else {
-                customInput.insert(outputString, at:0)
-                customInput.insert(symbol, at:0)
-                outputString += symbol
-                outputViewController?.display(outputString)
-            }
+    func beginProcessing(input: [String]) -> Double {
+        let resultNumber = calculator.processing(input: input)
+        var displayString = String(resultNumber)
+        if displayString.hasSuffix(".0") {
+            displayString.removeLast()
+            displayString.removeLast()
         }
-        else {*/
-            customInput.insert(symbol, at:0)
-            outputString += symbol
-            outputViewController?.display(symbol)
-        //}
+        outputViewController?.display(displayString)
+        return resultNumber
     }
     
-    func deleteLast() {
-        if customInput.isEmpty {
-            outputViewController?.display("0")
-        }
-        else {
-            for item in customInput.reversed(){
-                outputString += item
-            }
-            outputViewController?.display(outputString)
-        }
+    func inputReceived(input: String) {
+       outputViewController?.display(input)
+    }
+   
+    func setMemoryIndicator(active: String) {
+        outputViewController?.indicator.text = active
     }
     
-    func clearDisplay() {
-        outputString = ""
-        customInput = []
-        outputViewController?.display("0")
-    }
-    
-    func beginProcessing() {
-        let resultNumber = calculator.processing(input: customInput)
-        customInput = []
-        outputString = String(resultNumber)
-        if outputString.hasSuffix(".0") {
-            outputString.removeLast()
-            outputString.removeLast()
-        }
-        outputViewController?.display(outputString)
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -85,7 +52,6 @@ class ViewController: UIViewController, InputDelegate {
         }
     }
 }
-
 
 enum ReceivedSymbol: String {
     case digit

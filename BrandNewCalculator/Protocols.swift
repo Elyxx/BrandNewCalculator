@@ -13,8 +13,10 @@ protocol ProcessDelegate:class{
 }
 
 protocol InputDelegate: class {
-    func beginProcessing()
-    func clearDisplay()
-    func deleteLast()
-    func symbolReceived(_ symbol: String)//, _ group: ReceivedSymbol)
+    //func cleanMemory()
+    //func readMemory()
+    func beginProcessing(input: [String]) -> Double
+    func setMemoryIndicator(active: String)
+    //func deleteLast() -> Bool
+    func inputReceived(input: String)//, _ group: ReceivedSymbol)
 }
